@@ -19,6 +19,15 @@ function Movie() {
     setMovies([...updatedList])
   }
 
+  const updateMovieListByName = ()=>{
+    const updatedList = movies.sort((a,b)=>{
+      if(a['title']>b['title']) return 1;
+      else
+      return -1;
+    })
+    setMovies([...updatedList])
+  }
+
   return (
     <div className="position-center container">
 
@@ -26,6 +35,7 @@ function Movie() {
         <div className="text-center px-3">Sort by</div>
         <button type="button" className="btn btn-danger btn-sm mx-2" onClick={updateMovieListByUpvotes}>Upvotes</button>
         <button type="button" className="btn btn-warning btn-sm" onClick={updateMovieListByDate}>Release Date</button>
+        <button type="button" className="btn btn-primary btn-sm mx-2" data-testid="movie-sort-btn" onClick={updateMovieListByName}>Movie Name</button>
       </div>
 
       <table className="table table-striped text-center">
